@@ -7,7 +7,7 @@ window.SITE_CONFIG = {
   downloadSize: "87 MB",
   feedbackEmail: "feedback@listingsimulator.net",
   // Paste App ID from https://cusdis.com dashboard (Website → Embed / App ID). Webhook is optional — leave off.
-  cusdisAppId: "",
+  cusdisAppId: "5fd0c7e5-7870-4525-9d80-7ac1f9466106",
   buyMeACoffeeUrl: "",
 
   /**

@@ -6,8 +6,8 @@ window.SITE_CONFIG = {
   downloadFile: "Listing-Simulator-Setup-1.0.8.exe",
   downloadSize: "87 MB",
   feedbackEmail: "feedback@listingsimulator.net",
-  demoVideoUrl: "", // e.g. "https://www.youtube.com/embed/VIDEO_ID"
-  cusdisAppId: "", // from https://cusdis.com — leave empty to hide comments until ready
+  // Paste App ID from https://cusdis.com dashboard (Website → Embed / App ID). Webhook is optional — leave off.
+  cusdisAppId: "",
   buyMeACoffeeUrl: "",
 
   /**

@@ -55,9 +55,15 @@ Set primary domain to `listingsimulator.net` (redirect www → apex or vice vers
 ## 5. Cusdis comments (free)
 
 1. Register at [cusdis.com](https://cusdis.com).
-2. Add website URL `https://listingsimulator.net`.
-3. Copy **App ID** into `js/site-config.js` → `cusdisAppId`.
-4. Redeploy the site.
+2. Create a website / project. Set the site URL to `https://listingsimulator.net` (and/or your Netlify URL).
+3. Copy the **App ID** (a UUID like `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`) from the dashboard Embed / settings page.
+4. Put it in `js/site-config.js`:
+   ```js
+   cusdisAppId: "paste-app-id-here",
+   ```
+5. Commit and push (or redeploy). The Comments section appears automatically.
+6. **Webhook:** leave **off** unless you want Slack/Telegram notifications. Not required for comments to work.
+7. New comments are **hidden until you approve** them in the Cusdis dashboard (by design).
 
 ## 6. App auto-updates (electron-updater)
 

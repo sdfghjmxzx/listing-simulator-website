@@ -30,18 +30,13 @@
     }
   }
 
-  // Demo video
-  var videoWrap = document.getElementById("demoVideo");
-  if (videoWrap && cfg.demoVideoUrl) {
-    videoWrap.innerHTML =
-      '<iframe src="' + cfg.demoVideoUrl + '" title="Listing Simulator demo" ' +
-      'allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" ' +
-      'allowfullscreen loading="lazy"></iframe>';
-  }
-
-  // Cusdis comments
+  // Cusdis comments (section stays hidden until cusdisAppId is set)
+  var commentsSection = document.getElementById("comments");
   var commentsWrap = document.getElementById("commentsWrap");
+  var commentsNav = document.querySelector('.site-nav a[href="#comments"]');
   if (cfg.cusdisAppId && commentsWrap) {
+    if (commentsSection) commentsSection.hidden = false;
+    if (commentsNav) commentsNav.style.display = "";
     commentsWrap.innerHTML =
       '<div id="cusdis_thread" data-host="https://cusdis.com" data-app-id="' + cfg.cusdisAppId + '" ' +
       'data-page-id="home" data-page-title="Listing Simulator" data-page-url="' +
@@ -51,6 +46,8 @@
     s.defer = true;
     s.src = "https://cusdis.com/js/cusdis.es.js";
     commentsWrap.appendChild(s);
+  } else {
+    if (commentsNav) commentsNav.style.display = "none";
   }
 
   // Mobile nav

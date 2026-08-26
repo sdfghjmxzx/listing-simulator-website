@@ -2,8 +2,8 @@
 window.SITE_CONFIG = {
   productName: "Listing Simulator",
   domain: "https://listingsimulator.net",
-  version: "1.0.6",
-  downloadFile: "Listing-Simulator-Setup-1.0.6.exe",
+  version: "1.0.8",
+  downloadFile: "Listing-Simulator-Setup-1.0.8.exe",
   downloadSize: "87 MB",
   feedbackEmail: "feedback@listingsimulator.net",
   demoVideoUrl: "", // e.g. "https://www.youtube.com/embed/VIDEO_ID"

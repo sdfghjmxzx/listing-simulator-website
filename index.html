@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Listing Simulator — Amazon catalog Excel tool for Windows</title>
+  <meta name="description" content="Listing Simulator is a free Windows desktop app for Amazon sellers. Open catalog Excel files locally, edit variation families and listings, merge inventory, and export clone uploads — your data stays on your PC.">
+  <meta name="keywords" content="Listing Simulator, Amazon catalog, Amazon listing tool, Excel catalog, Seller Central, export clones, variation family">
+  <link rel="canonical" href="https://listingsimulator.net/">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://listingsimulator.net/">
+  <meta property="og:title" content="Listing Simulator — Amazon catalog Excel tool">
+  <meta property="og:description" content="Work on Amazon catalog Excel files locally. Inventory, listing editor, merge, and export clones for upload.">
+  <meta property="og:image" content="https://listingsimulator.net/assets/logo.png">
+  <meta name="twitter:card" content="summary">
+  <link rel="icon" href="assets/logo.png" type="image/png">
+  <link rel="stylesheet" href="css/style.css">
+  <script type="application/ld+json" id="softwareLd"></script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="#top">
+      <img src="assets/logo.png" alt="Listing Simulator logo" width="40" height="40">
+      <span>Listing Simulator</span>
+    </a>
+    <button type="button" class="nav-toggle" id="navToggle" aria-label="Open menu">Menu</button>
+    <nav class="site-nav" id="siteNav" aria-label="Main">
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#how-it-works">How it works</a></li>
+        <li><a href="#screenshots">Screenshots</a></li>
+        <li><a href="#demo">Demo</a></li>
+        <li><a href="#download">Download</a></li>
+        <li><a href="#comments">Comments</a></li>
+        <li><a class="btn btn-primary btn-sm" id="navDownload" href="/downloads/Listing-Simulator-Setup-1.0.0.exe">Download</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="hero-copy">
+        <h1>Amazon catalog Excel, on your PC</h1>
+        <p class="hero-lead">
+          Listing Simulator is a Windows desktop app for Amazon sellers. Open your catalog workbook,
+          browse Inventory, edit listings and variation families, then Save or Export clones for upload.
+          Your catalog never leaves your computer.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" id="heroDownload" href="/downloads/Listing-Simulator-Setup-1.0.0.exe">Download for Windows</a>
+          <a class="btn btn-secondary" href="#how-it-works">See how it works</a>
+        </div>
+        <p class="hero-meta" id="heroVersion">v1.0.0 · 87 MB</p>
+      </div>
+      <div class="hero-visual">
+        <img src="assets/screenshots/inventory/01.png" alt="Listing Simulator Inventory Manager screen" width="640" height="400">
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="container">
+      <div class="section-head">
+        <h2>What is Listing Simulator?</h2>
+        <p>A local workspace for the Excel catalog files Amazon gives you — without deleting sheets or uploading your workbook to the cloud.</p>
+      </div>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <h3>Local &amp; private</h3>
+          <p>Open, edit, and save on your machine. Nothing is hosted on our servers. Your API keys for optional AI stay in your user profile.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Built for Amazon templates</h3>
+          <p>Works with catalog reports (.xlsx, .xlsm, .xls). Find Catalog and Bind Rules keep the workbook aligned with Amazon’s sheet structure.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Clones, not raw Data rows</h3>
+          <p>Edit working copies in Clones. Export builds a focused upload file for one family (or a few) — not the whole catalog at once.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="features">
+    <div class="container">
+      <div class="section-head">
+        <h2>Features</h2>
+        <p>Everything you need from download to upload.</p>
+      </div>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <h3>Inventory Manager</h3>
+          <p>Families, standalones, future families, and past listings in one sortable list with health hints.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Listing editor</h3>
+          <p>Edit titles, bullets, gallery, variation theme, attach children, and review listing health before export.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Merge catalog</h3>
+          <p>Pull in a fresh inventory file while keeping Clones, Notes, and history until you Save.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Export clones</h3>
+          <p>Generate an Amazon-ready .xlsx from checked families on the Clones sheet.</p>
+        </div>
+        <div class="feature-card">
+          <h3>View sheets</h3>
+          <p>Jump to Clones and Notes grids when you need spreadsheet-style access.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Optional AI (Aleksa)</h3>
+          <p>Chat, field enhance, inventory scan, and gallery image tools when you add your own API key.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="how-it-works">
+    <div class="container">
+      <div class="section-head">
+        <h2>How it works</h2>
+        <p>Typical flow from Seller Central to upload.</p>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <h3>Get your catalog</h3>
+          <p>Download an inventory / catalog report from Seller Central and save the Excel file.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <h3>Open &amp; bind</h3>
+          <p>Open catalog in Listing Simulator. Use Find Catalog and Bind Rules if the banners ask.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <h3>Edit listings</h3>
+          <p>Pick a row in Inventory, create a Clone, edit on the Listing page, then Save.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">4</div>
+          <h3>Export &amp; upload</h3>
+          <p>Export one family (or a few) from Clones, review the file, upload to Amazon.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="screenshots">
+    <div class="container">
+      <div class="section-head">
+        <h2>Screenshots</h2>
+        <p>Click a topic to open the gallery. Arrow through every image — Inventory continues into Listing, Export, and AI.</p>
+      </div>
+      <div class="gallery" id="galleryAlbums" aria-label="Screenshot albums"></div>
+    </div>
+  </section>
+
+  <div class="lightbox" id="lightbox" hidden aria-hidden="true" role="dialog" aria-modal="true" aria-label="Screenshot gallery">
+    <button type="button" class="lightbox-backdrop" id="lightboxBackdrop" aria-label="Close gallery"></button>
+    <div class="lightbox-panel">
+      <button type="button" class="lightbox-close" id="lightboxClose" aria-label="Close">&times;</button>
+      <button type="button" class="lightbox-nav lightbox-prev" id="lightboxPrev" aria-label="Previous image">&#10094;</button>
+      <figure class="lightbox-figure">
+        <img id="lightboxImg" src="" alt="">
+        <figcaption>
+          <span class="lightbox-album" id="lightboxAlbum"></span>
+          <span class="lightbox-caption" id="lightboxCaption"></span>
+          <span class="lightbox-count" id="lightboxCount"></span>
+        </figcaption>
+      </figure>
+      <button type="button" class="lightbox-nav lightbox-next" id="lightboxNext" aria-label="Next image">&#10095;</button>
+    </div>
+  </div>
+
+  <section id="demo">
+    <div class="container">
+      <div class="section-head">
+        <h2>Demo video</h2>
+        <p>Watch a walkthrough of the app.</p>
+      </div>
+      <div class="video-wrap" id="demoVideo">
+        <div class="video-placeholder">
+          Demo video coming soon.<br>
+          Add your YouTube embed URL in <code>js/site-config.js</code> → <code>demoVideoUrl</code>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="download">
+    <div class="container">
+      <div class="section-head">
+        <h2>Download</h2>
+        <p>Free for personal use. Windows 10 or 11, 64-bit.</p>
+      </div>
+      <div class="download-box">
+        <a class="btn btn-primary" id="downloadBtn" href="/downloads/Listing-Simulator-Setup-1.0.0.exe">Download Listing Simulator</a>
+        <p id="downloadVersion">v1.0.0 · 87 MB</p>
+        <div class="download-reqs">
+          <strong>Requirements</strong>
+          <ul>
+            <li>Windows 10 or 11 (64-bit)</li>
+            <li>Amazon catalog Excel files (.xlsx, .xlsm, .xls)</li>
+            <li>~200 MB disk space after install</li>
+          </ul>
+        </div>
+        <div class="note-smartscreen">
+          <strong>Windows SmartScreen:</strong> The installer is not code-signed yet. You may see “Windows protected your PC.”
+          Click <em>More info</em> → <em>Run anyway</em>. We are working on a signing certificate for a smoother install.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="comments">
+    <div class="container">
+      <div class="section-head">
+        <h2>Comments</h2>
+        <p>Questions, feedback, and tips from other sellers.</p>
+      </div>
+      <div class="comments-wrap" id="commentsWrap">
+        <div class="comments-placeholder">
+          Comments load here after you add your free <a href="https://cusdis.com" target="_blank" rel="noopener">Cusdis</a> App ID
+          in <code>js/site-config.js</code>.
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div>
+      <span id="footerVersion">Listing Simulator 1.0.0</span>
+      · Personal use license
+    </div>
+    <div>
+      <a id="footerDownload" href="/downloads/Listing-Simulator-Setup-1.0.0.exe">Download</a>
+      · <a id="feedbackMail" href="mailto:feedback@listingsimulator.net">feedback@listingsimulator.net</a>
+    </div>
+  </div>
+</footer>
+
+<script src="js/site-config.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

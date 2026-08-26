@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://listingsimulator.net/sitemap.xml

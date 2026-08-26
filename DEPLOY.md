@@ -4,17 +4,25 @@ Domain: **listingsimulator.net**
 
 ## 1. Prepare files
 
-1. Build the installer (from `CatalogDesktop`):
+1. From `CatalogDesktop`, build and stage updates in one step:
    ```
-   npm run dist:install
+   npm run release
    ```
-2. Copy the installer into this folder:
+   Or double-click `CatalogDesktop\release.bat`.
+
+   To bump the version first:
    ```
-   copy dist\Listing-Simulator-Setup-1.0.0.exe ..\website\downloads\
+   npm run release:patch
    ```
-3. (Optional) Replace placeholder SVGs in `assets/screenshots/{inventory,listing,export,ai}/` with real PNGs (`01.png`–`05.png`), then update paths in `js/site-config.js` → `galleryAlbums`.
+
+   That builds the NSIS installer and copies into `website/updates/` (and `website/downloads/` when present):
+   - `latest.yml`
+   - `Listing-Simulator-Setup-X.Y.Z.exe`
+   - `.blockmap`
+
+2. (Optional) Replace placeholder SVGs in `assets/screenshots/{inventory,listing,export,ai}/` with real PNGs (`01.png`–`05.png`), then update paths in `js/site-config.js` → `galleryAlbums`.
    Clicking any album opens **one continuous gallery** (Inventory 1–5 → Listing 6–10 → Export → AI).
-4. Edit `js/site-config.js`:
+3. Edit `js/site-config.js`:
    - `demoVideoUrl` — YouTube embed URL when ready
    - `cusdisAppId` — from [cusdis.com](https://cusdis.com) (free comments)
    - `feedbackEmail` — your real email

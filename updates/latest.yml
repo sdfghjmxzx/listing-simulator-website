@@ -1,8 +1,8 @@
-version: 1.0.8
+version: 1.0.10
 files:
-  - url: Listing-Simulator-Setup-1.0.8.exe
-    sha512: FOnMURJSf6+wnDSuSnG0jDCg4LTNOxc6CqdkrgtS70yX+/5QnwZWwz/773y2jNFYeZlqI9yqB4ydyhHeFV8iKg==
-    size: 91127029
-path: Listing-Simulator-Setup-1.0.8.exe
-sha512: FOnMURJSf6+wnDSuSnG0jDCg4LTNOxc6CqdkrgtS70yX+/5QnwZWwz/773y2jNFYeZlqI9yqB4ydyhHeFV8iKg==
-releaseDate: '2026-08-26T12:27:01.541Z'
+  - url: Listing-Simulator-Setup-1.0.10.exe
+    sha512: JG1wTA1cnGhrXrROz1oFouS7DSFD1U9LATqsiU1aP46bNXjGJiKLhbz2kKaIesTPznFtCj7Ujm3VAI3Bxn/JXA==
+    size: 91172824
+path: Listing-Simulator-Setup-1.0.10.exe
+sha512: JG1wTA1cnGhrXrROz1oFouS7DSFD1U9LATqsiU1aP46bNXjGJiKLhbz2kKaIesTPznFtCj7Ujm3VAI3Bxn/JXA==
+releaseDate: '2026-08-28T14:07:03.929Z'

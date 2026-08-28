@@ -154,16 +154,25 @@ a:hover { color: var(--orange); }
 }
 
 .hero h1 {
-  margin: 0 0 16px;
+  margin: 0 0 10px;
   font-size: clamp(1.75rem, 4vw, 2.5rem);
   line-height: 1.2;
 }
 
+.hero-tagline {
+  margin: 0 0 18px;
+  font-size: clamp(1.05rem, 2.2vw, 1.35rem);
+  font-weight: 600;
+  opacity: 0.95;
+  letter-spacing: 0.01em;
+}
+
 .hero-lead {
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   opacity: 0.92;
   margin: 0 0 28px;
-  max-width: 36em;
+  max-width: 42em;
+  line-height: 1.55;
 }
 
 .hero-actions {

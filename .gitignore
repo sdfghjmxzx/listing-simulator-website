@@ -1,3 +1,4 @@
 # Large installer / update artifacts — upload with deploy, do not commit
 *.exe
 *.blockmap
+node_modules/

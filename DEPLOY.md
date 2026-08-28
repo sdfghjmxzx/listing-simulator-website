@@ -67,13 +67,17 @@ Set primary domain to `listingsimulator.net` (redirect www → apex or vice vers
 
 ## 6. App auto-updates (electron-updater)
 
-1. Build installer: `npm run dist:install` in `CatalogDesktop`.
-2. Copy into `website/updates/`:
+1. Build installer: `npm run release:patch` in `CatalogDesktop` (or `release.bat`).
+2. Copy into `website/updates/` (release script does this automatically):
    - `latest.yml`
    - `Listing-Simulator-Setup-X.Y.Z.exe`
    - `Listing-Simulator-Setup-X.Y.Z.exe.blockmap`
-3. Redeploy the Netlify site.
-4. Confirm in a browser:  
+3. **Redeploy the full `website/` folder on Netlify** (git push alone does not upload `.exe` files — they are gitignored). From `website/` after a one-time `npx netlify login` + `npx netlify link`:
+   ```
+   powershell -ExecutionPolicy Bypass -File scripts/deploy-netlify.ps1 -Message "v1.0.10"
+   ```
+   Or drag-drop the entire `website/` folder in the Netlify dashboard.
+4. Confirm in a browser:
    `https://listingsimulator.netlify.app/updates/latest.yml`  
    (must be YAML text, not a 404 HTML page).
 

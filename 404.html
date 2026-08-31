@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Page not found — Listing Simulator</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" href="/assets/logo.png" type="image/png">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="/">
+      <img src="/assets/logo.png" alt="Listing Simulator logo" width="40" height="40">
+      <span>Listing Simulator</span>
+    </a>
+    <nav class="site-nav" aria-label="Main">
+      <ul>
+        <li><a href="/#download">Download</a></li>
+        <li><a href="/">Home</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main class="error-page">
+  <div class="container error-page-inner">
+    <p class="error-code">404</p>
+    <h1>Page not found</h1>
+    <p class="error-lead">That URL doesn’t exist on listingsimulator.net. If you wanted the Windows app, use Download below.</p>
+    <div class="error-actions">
+      <a class="btn btn-primary" id="errorDownload" href="/downloads/Listing-Simulator-Setup-1.0.10.exe">Download Listing Simulator</a>
+      <a class="btn btn-secondary" href="/">Back to home</a>
+    </div>
+    <p class="error-hint" id="errorHint"></p>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div><span id="footerVersion">Listing Simulator</span> · Personal use license</div>
+    <div><a id="footerDownload" href="/downloads/Listing-Simulator-Setup-1.0.10.exe">Download</a></div>
+  </div>
+</footer>
+
+<script src="/js/site-config.js"></script>
+<script>
+(function () {
+  var cfg = window.SITE_CONFIG || {};
+  var file = cfg.downloadFile || "Listing-Simulator-Setup-1.0.10.exe";
+  var url = "/downloads/" + file;
+  ["errorDownload", "footerDownload"].forEach(function (id) {
+    var el = document.getElementById(id);
+    if (el) el.href = url;
+  });
+  var ver = document.getElementById("footerVersion");
+  if (ver && cfg.version) ver.textContent = "Listing Simulator " + cfg.version;
+  var hint = document.getElementById("errorHint");
+  if (hint && window.location.pathname.indexOf("wp-") >= 0) {
+    hint.textContent = "WordPress-style URLs are not used on this site — automated bots often request them.";
+  }
+})();
+</script>
+</body>
+</html>

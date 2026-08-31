@@ -1,4 +1,12 @@
 User-agent: *
 Allow: /
 
+# Not WordPress — cut noise for crawlers that respect robots.txt
+Disallow: /wp-admin/
+Disallow: /wp-login.php
+Disallow: /xmlrpc.php
+Disallow: /phpmyadmin/
+Disallow: /.env
+Disallow: /.git/
+
 Sitemap: https://listingsimulator.net/sitemap.xml

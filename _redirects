@@ -1,0 +1,4 @@
+# Old installer filenames → current release (deploy must include the .exe on Netlify)
+/downloads/Listing-Simulator-Setup-1.0.0.exe  /downloads/Listing-Simulator-Setup-1.0.10.exe  301
+/downloads/listing-simulator-setup-1.0.0.exe  /downloads/Listing-Simulator-Setup-1.0.10.exe  301
+/downloads/Listing-Simulator-Setup-1.0.4.exe  /downloads/Listing-Simulator-Setup-1.0.10.exe  301

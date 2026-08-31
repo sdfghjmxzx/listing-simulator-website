@@ -11,12 +11,12 @@
     if (el && href) el.href = href;
   }
 
-  var downloadUrl = "/downloads/" + (cfg.downloadFile || "Listing-Simulator-Setup-1.0.0.exe");
-  var versionLabel = "v" + (cfg.version || "1.0.0") + (cfg.downloadSize ? " · " + cfg.downloadSize : "");
+  var downloadUrl = "/downloads/" + (cfg.downloadFile || "Listing-Simulator-Setup-1.0.10.exe");
+  var versionLabel = "v" + (cfg.version || "1.0.10") + (cfg.downloadSize ? " · " + cfg.downloadSize : "");
 
   setText("heroVersion", versionLabel);
   setText("downloadVersion", versionLabel);
-  setText("footerVersion", "Listing Simulator " + (cfg.version || "1.0.0"));
+  setText("footerVersion", "Listing Simulator " + (cfg.version || "1.0.10"));
 
   ["heroDownload", "navDownload", "downloadBtn", "footerDownload"].forEach(function (id) {
     setHref(id, downloadUrl);
@@ -77,7 +77,7 @@
         priceCurrency: "USD"
       },
       downloadUrl: (cfg.domain || window.location.origin) + downloadUrl,
-      softwareVersion: cfg.version || "1.0.0",
+      softwareVersion: cfg.version || "1.0.10",
       description: "Windows desktop app for Amazon catalog Excel files. Edit listings locally and export clone uploads."
     };
     ld.textContent = JSON.stringify(schema);

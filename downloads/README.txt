@@ -3,7 +3,7 @@
 Place installers here before deploying:
 
   Listing-Simulator-Setup-1.0.11.exe          (Windows)
-  Listing-Simulator-1.0.11-mac.dmg            (Mac)
+  Listing-Simulator-1.0.11-mac.dmg            (Mac, ~108 MB)
 
 Windows build (from CatalogDesktop on a Windows PC):
 

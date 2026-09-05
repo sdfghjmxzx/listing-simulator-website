@@ -1,11 +1,8 @@
 [build]
   publish = "."
 
-[[headers]]
-  for = "/downloads/*"
-  [headers.values]
-    Content-Type = "application/octet-stream"
-    Content-Disposition = "attachment"
+# Do not set Content-Disposition on /downloads/* — it applies to 404s too and
+# makes Chrome show ERR_INVALID_RESPONSE when a file is missing.
 
 [[headers]]
   for = "/updates/*.yml"

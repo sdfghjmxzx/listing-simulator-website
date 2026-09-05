@@ -2,7 +2,7 @@
 
 Place the Windows installer here before deploying:
 
-  Listing-Simulator-Setup-1.0.10.exe
+  Listing-Simulator-Setup-1.0.11.exe
 
 Build from CatalogDesktop (on main branch):
 
@@ -10,7 +10,7 @@ Build from CatalogDesktop (on main branch):
 
 Copy from:
 
-  CatalogDesktop/dist/Listing-Simulator-Setup-1.0.10.exe
+  CatalogDesktop/dist/Listing-Simulator-Setup-1.0.11.exe
 
 Also copy update feed files into ../updates/ (latest.yml + Setup exe + .blockmap).
 

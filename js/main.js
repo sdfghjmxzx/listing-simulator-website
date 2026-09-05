@@ -11,15 +11,21 @@
     if (el && href) el.href = href;
   }
 
-  var downloadUrl = "/downloads/" + (cfg.downloadFile || "Listing-Simulator-Setup-1.0.10.exe");
-  var versionLabel = "v" + (cfg.version || "1.0.10") + (cfg.downloadSize ? " · " + cfg.downloadSize : "");
+  var downloadUrl = "/downloads/" + (cfg.downloadFile || "Listing-Simulator-Setup-1.0.11.exe");
+  var downloadUrlMac = "/downloads/" + (cfg.downloadFileMac || "Listing-Simulator-1.0.11-mac.dmg");
+  var versionLabel = "v" + (cfg.version || "1.0.11") + (cfg.downloadSize ? " · Windows " + cfg.downloadSize : "");
+  var versionLabelMac = "v" + (cfg.version || "1.0.11") + (cfg.downloadSizeMac ? " · Mac " + cfg.downloadSizeMac : "");
 
   setText("heroVersion", versionLabel);
   setText("downloadVersion", versionLabel);
-  setText("footerVersion", "Listing Simulator " + (cfg.version || "1.0.10"));
+  setText("downloadVersionMac", versionLabelMac);
+  setText("footerVersion", "Listing Simulator " + (cfg.version || "1.0.11"));
 
   ["heroDownload", "navDownload", "downloadBtn", "footerDownload"].forEach(function (id) {
     setHref(id, downloadUrl);
+  });
+  ["heroDownloadMac", "downloadBtnMac"].forEach(function (id) {
+    setHref(id, downloadUrlMac);
   });
 
   if (cfg.feedbackEmail) {

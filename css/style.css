@@ -550,7 +550,24 @@ section#download { background: var(--bg); }
 .download-box .btn-primary {
   font-size: 1.15rem;
   padding: 16px 32px;
+}
+
+.download-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
   margin-bottom: 16px;
+}
+
+.download-actions .btn {
+  margin-bottom: 0;
+}
+
+#downloadVersionMac {
+  margin-top: 4px;
+  color: var(--muted, #565959);
+  font-size: 0.95rem;
 }
 
 .download-reqs {

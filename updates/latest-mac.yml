@@ -1,0 +1,11 @@
+version: 1.0.11
+files:
+  - url: Listing-Simulator-1.0.11-mac.zip
+    sha512: n3mmP0X8WUoFMfpdI5RSMGi8RQs73bs1/wywlFh4jxZv0zuiundIKhVIn/rCrp9H2ppahy+sDmB4YSHmY7SUew==
+    size: 108617697
+  - url: Listing-Simulator-1.0.11-mac.dmg
+    sha512: qdQ0HaWF0iYr0PaTqB8mzqT87solszlmTRvL34LIOMuuwx7EN7bSv7/wqdmEaYd9z1qnPWvy1dH9ZQhSiRT01w==
+    size: 113091020
+path: Listing-Simulator-1.0.11-mac.zip
+sha512: n3mmP0X8WUoFMfpdI5RSMGi8RQs73bs1/wywlFh4jxZv0zuiundIKhVIn/rCrp9H2ppahy+sDmB4YSHmY7SUew==
+releaseDate: '2026-09-05T14:26:17.260Z'

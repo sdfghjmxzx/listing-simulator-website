@@ -2,3 +2,6 @@
 *.exe
 *.blockmap
 node_modules/
+
+*.dmg
+*.zip

@@ -257,6 +257,44 @@ section:nth-of-type(even) .feature-card {
   color: var(--muted);
 }
 
+.feature-card-highlight {
+  border-color: #c8d0d0;
+  box-shadow: inset 0 0 0 1px rgba(231, 118, 0, 0.12);
+}
+
+.feature-also {
+  margin-top: 32px;
+  padding: 24px 28px;
+  background: var(--bg);
+  border: 1px solid #d5dbdb;
+  border-radius: var(--radius);
+}
+
+.feature-also-title {
+  margin: 0 0 12px;
+  font-size: 1.05rem;
+  color: var(--navy);
+}
+
+.feature-also-list {
+  margin: 0;
+  padding-left: 1.2rem;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.feature-also-list li {
+  margin-bottom: 8px;
+}
+
+.feature-also-list li:last-child {
+  margin-bottom: 0;
+}
+
+.feature-also-list strong {
+  color: var(--navy);
+}
+
 /* Steps */
 .steps {
   display: grid;
@@ -611,6 +649,80 @@ section#download { background: var(--bg); }
   background: var(--bg);
   border-radius: var(--radius);
   border: 1px dashed #888c8c;
+}
+
+.comments-gate {
+  text-align: center;
+  color: var(--muted);
+  padding: 28px 20px;
+  background: var(--bg);
+  border-radius: var(--radius);
+  border: 1px dashed #888c8c;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.comments-gate p {
+  margin: 0 0 16px;
+  font-size: 0.95rem;
+  line-height: 1.45;
+}
+
+/* Legal pages */
+.legal-page {
+  padding: 48px 0 64px;
+  background: var(--bg);
+}
+
+.legal-prose {
+  max-width: 720px;
+  background: var(--white);
+  border: 1px solid #d5dbdb;
+  border-radius: var(--radius);
+  padding: 40px 36px;
+  box-shadow: var(--shadow);
+}
+
+.legal-prose h1 {
+  margin: 0 0 8px;
+  font-size: 1.75rem;
+  color: var(--navy);
+}
+
+.legal-updated {
+  color: var(--muted);
+  font-size: 0.9rem;
+  margin: 0 0 24px;
+}
+
+.legal-prose h2 {
+  margin: 28px 0 10px;
+  font-size: 1.15rem;
+  color: var(--navy);
+}
+
+.legal-prose p,
+.legal-prose li {
+  line-height: 1.55;
+  color: #0f1111;
+}
+
+.legal-prose ul {
+  padding-left: 1.25rem;
+}
+
+.legal-prose a {
+  color: #007185;
+}
+
+.footer-disclaimer {
+  margin-top: 16px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  font-size: 0.78rem;
+  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.55);
+  max-width: 900px;
 }
 
 /* Footer */

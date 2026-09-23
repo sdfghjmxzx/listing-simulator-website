@@ -36,22 +36,41 @@
     }
   }
 
-  // Cusdis comments (section stays hidden until cusdisAppId is set)
+  // Cusdis comments — only inject third-party script after explicit click
   var commentsSection = document.getElementById("comments");
   var commentsWrap = document.getElementById("commentsWrap");
   var commentsNav = document.querySelector('.site-nav a[href="#comments"]');
   if (cfg.cusdisAppId && commentsWrap) {
     if (commentsSection) commentsSection.hidden = false;
     if (commentsNav) commentsNav.style.display = "";
-    commentsWrap.innerHTML =
-      '<div id="cusdis_thread" data-host="https://cusdis.com" data-app-id="' + cfg.cusdisAppId + '" ' +
-      'data-page-id="home" data-page-title="Listing Simulator" data-page-url="' +
-      (cfg.domain || window.location.origin) + '/"></div>';
-    var s = document.createElement("script");
-    s.async = true;
-    s.defer = true;
-    s.src = "https://cusdis.com/js/cusdis.es.js";
-    commentsWrap.appendChild(s);
+
+    function loadCusdis_() {
+      var gate = document.getElementById("commentsGate");
+      if (gate) gate.remove();
+      var thread = document.createElement("div");
+      thread.id = "cusdis_thread";
+      thread.setAttribute("data-host", "https://cusdis.com");
+      thread.setAttribute("data-app-id", cfg.cusdisAppId);
+      thread.setAttribute("data-page-id", "home");
+      thread.setAttribute("data-page-title", "Listing Simulator");
+      thread.setAttribute("data-page-url", (cfg.domain || window.location.origin) + "/");
+      commentsWrap.appendChild(thread);
+      var s = document.createElement("script");
+      s.async = true;
+      s.defer = true;
+      s.src = "https://cusdis.com/js/cusdis.es.js";
+      commentsWrap.appendChild(s);
+    }
+
+    var loadBtn = document.getElementById("loadCommentsBtn");
+    if (loadBtn) {
+      loadBtn.addEventListener("click", function () {
+        loadCusdis_();
+      });
+    } else {
+      // Fallback if gate markup missing
+      loadCusdis_();
+    }
   } else {
     if (commentsNav) commentsNav.style.display = "none";
   }
@@ -76,15 +95,15 @@
       "@type": "SoftwareApplication",
       name: cfg.productName,
       applicationCategory: "BusinessApplication",
-      operatingSystem: "Windows 10, Windows 11",
+      operatingSystem: "Windows 10, Windows 11, macOS 11+",
       offers: {
         "@type": "Offer",
         price: "0",
         priceCurrency: "USD"
       },
       downloadUrl: (cfg.domain || window.location.origin) + downloadUrl,
-      softwareVersion: cfg.version || "1.0.10",
-      description: "Windows desktop app for Amazon catalog Excel files. Edit listings locally and export clone uploads."
+      softwareVersion: cfg.version || "1.0.11",
+      description: "Windows and Mac desktop app for Amazon catalog Excel files. Health Check, Listing Creation, Stock/Ships/Package watch, image editor, Create Catalog, and Export with health review — all local."
     };
     ld.textContent = JSON.stringify(schema);
   }

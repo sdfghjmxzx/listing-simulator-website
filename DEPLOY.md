@@ -1,100 +1,91 @@
 # Listing Simulator website — deploy guide
 
-Domain: **listingsimulator.net**
+Domain: **listingsimulator.net**  
+Repo (source of truth): https://github.com/sdfghjmxzx/listing-simulator-website
 
-## 1. Prepare files
+## Architecture (after GitHub Releases cutover)
 
-1. From `CatalogDesktop`, build and stage updates in one step:
-   ```
-   npm run release
-   ```
-   Or double-click `CatalogDesktop\release.bat`.
+| What | Where |
+|------|--------|
+| HTML / CSS / JS / screenshots | This git repo → **Netlify** (light deploys) |
+| Installers + `latest.yml` + blockmaps | **GitHub Releases** on the same repo |
+| Active / daily user stats | Cloudflare Worker (unchanged) |
 
-   To bump the version first:
-   ```
-   npm run release:patch
-   ```
+Do **not** upload `.exe` / `.dmg` to Netlify. That burned bandwidth on every deploy and every download.
 
-   That builds the NSIS installer and copies into `website/updates/` (and `website/downloads/` when present):
-   - `latest.yml`
-   - `Listing-Simulator-Setup-X.Y.Z.exe`
-   - `.blockmap`
+## 1. Netlify ↔ GitHub (one-time)
 
-2. (Optional) Replace placeholder SVGs in `assets/screenshots/{inventory,listing,export,ai}/` with real PNGs (`01.png`–`05.png`), then update paths in `js/site-config.js` → `galleryAlbums`.
-   Clicking any album opens **one continuous gallery** (Inventory 1–5 → Listing 6–10 → Export → AI).
-3. Edit `js/site-config.js`:
-   - `demoVideoUrl` — YouTube embed URL when ready
-   - `cusdisAppId` — from [cusdis.com](https://cusdis.com) (free comments)
-   - `feedbackEmail` — your real email
+1. Netlify → **Add new site → Import an existing project** → connect `sdfghjmxzx/listing-simulator-website`.
+2. Publish directory: site root (`.`). No build command needed for a static site.
+3. Connect **listingsimulator.net** under Domain settings (DNS as Netlify shows).
+4. Prefer **git push** deploys. Stop drag-dropping a folder that contains installers.
 
-## 2. Deploy on Netlify (recommended)
+## 2. Site content edits
 
-1. Sign up at [netlify.com](https://www.netlify.com) (free).
-2. **Add new site → Deploy manually** — drag the entire `website/` folder.
-3. Site gets a URL like `random-name.netlify.app`.
+1. Edit `js/site-config.js` (version labels, Cusdis, gallery, `githubOwner` / `githubRepo`).
+2. Commit and push to `main` → Netlify redeploys the light site only.
 
-## 3. Connect listingsimulator.net
+## 3. Ship a new app version (installers)
 
-At your domain registrar (where you bought `.net`):
+From `CatalogDesktop`:
 
-1. Netlify → **Domain settings → Add domain** → enter `listingsimulator.net` and `www.listingsimulator.net`.
-2. Netlify shows DNS records. Typically:
-   - **A record** `@` → Netlify load balancer IP (shown in dashboard), or
-   - **CNAME** `www` → `your-site.netlify.app`
-3. Wait for DNS (minutes to 48 hours). Netlify enables HTTPS automatically.
+```powershell
+npm run release:patch
+# or: .\scripts\release.ps1 -Bump patch
+```
 
-Set primary domain to `listingsimulator.net` (redirect www → apex or vice versa).
+That will:
 
-## 4. Google Search Console
-
-1. Go to [search.google.com/search-console](https://search.google.com/search-console).
-2. Add property `https://listingsimulator.net`.
-3. Verify via DNS TXT record (Netlify/registrar) or HTML file upload.
-4. Submit sitemap: `https://listingsimulator.net/sitemap.xml`.
-
-## 5. Cusdis comments (free)
-
-1. Register at [cusdis.com](https://cusdis.com).
-2. Create a website / project. Set the site URL to `https://listingsimulator.net` (and/or your Netlify URL).
-3. Copy the **App ID** (a UUID like `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`) from the dashboard Embed / settings page.
-4. Put it in `js/site-config.js`:
-   ```js
-   cusdisAppId: "paste-app-id-here",
-   ```
-5. Commit and push (or redeploy). The Comments section appears automatically.
-6. **Webhook:** leave **off** unless you want Slack/Telegram notifications. Not required for comments to work.
-7. New comments are **hidden until you approve** them in the Cusdis dashboard (by design).
-
-## 6. App auto-updates (electron-updater)
-
-1. Build installer: `npm run release:patch` in `CatalogDesktop` (or `release.bat`).
-2. Copy into `website/updates/` (release script does this automatically):
-   - `latest.yml`
+1. Build the NSIS installer.
+2. Update `website/js/site-config.js` version + filenames (**no** binary copy into `website/`).
+3. Create/upload a GitHub Release `vX.Y.Z` on `sdfghjmxzx/listing-simulator-website` with:
    - `Listing-Simulator-Setup-X.Y.Z.exe`
    - `Listing-Simulator-Setup-X.Y.Z.exe.blockmap`
-3. **Redeploy the full `website/` folder on Netlify** (git push alone does not upload `.exe` files — they are gitignored). From `website/` after a one-time `npx netlify login` + `npx netlify link`:
-   ```
-   powershell -ExecutionPolicy Bypass -File scripts/deploy-netlify.ps1 -Message "v1.0.10"
-   ```
-   Or drag-drop the entire `website/` folder in the Netlify dashboard.
-4. Confirm in a browser:
-   `https://listingsimulator.netlify.app/updates/latest.yml`  
-   (must be YAML text, not a 404 HTML page).
+   - `latest.yml`
+   - Mac assets when present
 
-Feed URL in the app (`release-config.json` + `package.json` publish.url) is currently:
+Requires once: [GitHub CLI](https://cli.github.com/) + `gh auth login`.
 
-`https://listingsimulator.netlify.app/updates/`
+Public URLs:
 
-When `listingsimulator.net` is connected to the same Netlify site, you may switch that URL to `https://listingsimulator.net/updates/` and ship a new installer. Until then, keep Netlify.
+- https://github.com/sdfghjmxzx/listing-simulator-website/releases/latest/download/Listing-Simulator-Setup-X.Y.Z.exe
+- https://github.com/sdfghjmxzx/listing-simulator-website/releases/latest/download/latest.yml
 
-**Important:** Builds that still point at `example.com/...` cannot self-update — install the new Setup once by hand, then Check for updates will use the Netlify feed.
+## 4. First cutover (manual once)
 
-## Local preview
+If Releases are empty, upload the current build once:
 
-Open `website/index.html` in a browser, or:
+```powershell
+cd CatalogDesktop\dist
+gh release create v1.0.12 `
+  "Listing-Simulator-Setup-1.0.12.exe" `
+  "Listing-Simulator-Setup-1.0.12.exe.blockmap" `
+  "latest.yml" `
+  --repo sdfghjmxzx/listing-simulator-website `
+  --title "Listing Simulator 1.0.12" `
+  --generate-notes
+```
+
+Then push the website repo (site-config already points at GitHub) so download buttons work.
+
+Ship **one new desktop build** that uses `updateProvider: "github"` so installed apps leave the old Netlify `/updates/` feed.
+
+## 5. Cusdis / Search Console
+
+Unchanged — see prior setup. Cusdis App ID lives in `js/site-config.js`.
+
+## 6. Local preview
 
 ```
 npx serve website
 ```
 
-Download button works only after the `.exe` is in `downloads/` and the site is served (not `file://`).
+Download buttons hit GitHub (need a published Release). Stats use Cloudflare + GitHub API from the browser.
+
+## Auto-update (desktop)
+
+`CatalogDesktop/release-config.json` and `package.json` `build.publish` use GitHub Releases on this repo. Local generic test:
+
+```
+set LISTING_SIMULATOR_UPDATE_URL=http://127.0.0.1:8787/
+```

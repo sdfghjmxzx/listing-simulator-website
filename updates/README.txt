@@ -1,29 +1,22 @@
-# Auto-update feed (electron-updater)
+# Auto-update feed — GitHub Releases (not Netlify)
 
-## Windows
+Installers and electron-updater metadata live on GitHub Releases:
 
-After `npm run dist:install` in CatalogDesktop, copy these files here before Netlify deploy:
+  https://github.com/sdfghjmxzx/listing-simulator-website/releases
+
+Assets per release (example v1.0.12):
 
   latest.yml
-  Listing-Simulator-Setup-X.Y.Z.exe
-  Listing-Simulator-Setup-X.Y.Z.exe.blockmap
+  Listing-Simulator-Setup-1.0.12.exe
+  Listing-Simulator-Setup-1.0.12.exe.blockmap
+  (optional Mac) latest-mac.yml, Listing-Simulator-1.0.12-mac.dmg / .zip
 
-## Mac (optional)
+Published by CatalogDesktop:
 
-After `npm run dist:mac` on a Mac (or from the GitHub Actions artifact):
+  npm run release
+  npm run release:patch
 
-  latest-mac.yml
-  Listing-Simulator-X.Y.Z-mac.dmg
-  Listing-Simulator-X.Y.Z-mac.zip
-  Listing-Simulator-X.Y.Z-mac.zip.blockmap   (if present)
+Do not put .exe / .blockmap files in this folder for Netlify deploy.
+This directory may keep a small latest.yml copy for reference only; the live feed is:
 
-From:
-
-  CatalogDesktop/dist/
-
-Public URLs (same files on Netlify):
-
-  https://listingsimulator.netlify.app/updates/latest.yml
-  https://listingsimulator.netlify.app/updates/latest-mac.yml
-
-Do not commit the .exe / .dmg (~87–95 MB) — see website/.gitignore.
+  https://github.com/sdfghjmxzx/listing-simulator-website/releases/latest/download/latest.yml

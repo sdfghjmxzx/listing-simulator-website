@@ -11,15 +11,23 @@
     if (el && href) el.href = href;
   }
 
-  var downloadUrl = "/downloads/" + (cfg.downloadFile || "Listing-Simulator-Setup-1.0.11.exe");
-  var downloadUrlMac = "/downloads/" + (cfg.downloadFileMac || "Listing-Simulator-1.0.11-mac.dmg");
-  var versionLabel = "v" + (cfg.version || "1.0.11") + (cfg.downloadSize ? " · Windows " + cfg.downloadSize : "");
-  var versionLabelMac = "v" + (cfg.version || "1.0.11") + (cfg.downloadSizeMac ? " · Mac " + cfg.downloadSizeMac : "");
+  var winFile = cfg.downloadFile || "Listing-Simulator-Setup-1.0.12.exe";
+  var macFile = cfg.downloadFileMac || "Listing-Simulator-1.0.12-mac.dmg";
+  var ghBase = String(cfg.githubReleaseLatestBase || "").replace(/\/+$/, "");
+  var useGithub = cfg.downloadSource === "github" && !!ghBase;
+  var downloadUrl = useGithub
+    ? (ghBase + "/" + winFile)
+    : ("/downloads/" + winFile);
+  var downloadUrlMac = useGithub
+    ? (ghBase + "/" + macFile)
+    : ("/downloads/" + macFile);
+  var versionLabel = "v" + (cfg.version || "1.0.12") + (cfg.downloadSize ? " · Windows " + cfg.downloadSize : "");
+  var versionLabelMac = "v" + (cfg.version || "1.0.12") + (cfg.downloadSizeMac ? " · Mac " + cfg.downloadSizeMac : "");
 
   setText("heroVersion", versionLabel);
   setText("downloadVersion", versionLabel);
   setText("downloadVersionMac", versionLabelMac);
-  setText("footerVersion", "Listing Simulator " + (cfg.version || "1.0.11"));
+  setText("footerVersion", "Listing Simulator " + (cfg.version || "1.0.12"));
 
   ["heroDownload", "navDownload", "downloadBtn", "footerDownload"].forEach(function (id) {
     setHref(id, downloadUrl);
@@ -27,6 +35,117 @@
   ["heroDownloadMac", "downloadBtnMac"].forEach(function (id) {
     setHref(id, downloadUrlMac);
   });
+
+  var presenceBase = String(cfg.presenceUrl || "").replace(/\/+$/, "");
+  var releasesApi = String(cfg.githubReleasesApi || "").replace(/\/+$/, "");
+
+  function formatStat_(n) {
+    if (typeof n !== "number" || !isFinite(n)) return "—";
+    try {
+      return n.toLocaleString();
+    } catch (e) {
+      return String(n);
+    }
+  }
+
+  function paintPublicStats_(st) {
+    st = st || {};
+    if (st.downloads != null) setText("statDownloads", formatStat_(st.downloads));
+    if (st.daily != null) setText("statDaily", formatStat_(st.daily));
+  }
+
+  function sumGithubDownloads_(releases) {
+    var total = 0;
+    (releases || []).forEach(function (rel) {
+      (rel.assets || []).forEach(function (asset) {
+        var name = String(asset.name || "");
+        if (/\.(exe|dmg|zip)$/i.test(name)) {
+          total += Number(asset.download_count) || 0;
+        }
+      });
+    });
+    return total;
+  }
+
+  function loadGithubDownloadCount_() {
+    if (!releasesApi) return Promise.resolve(null);
+    return fetch(releasesApi + "?per_page=30", {
+      method: "GET",
+      mode: "cors",
+      cache: "no-store",
+      headers: { Accept: "application/vnd.github+json" }
+    })
+      .then(function (r) {
+        if (!r.ok) throw new Error("GitHub releases HTTP " + r.status);
+        return r.json();
+      })
+      .then(function (list) {
+        return sumGithubDownloads_(list);
+      })
+      .catch(function () {
+        return null;
+      });
+  }
+
+  function loadPresenceDaily_() {
+    if (!presenceBase) return Promise.resolve(null);
+    return fetch(presenceBase + "/stats", { method: "GET", mode: "cors", cache: "no-store" })
+      .then(function (r) { return r.json(); })
+      .then(function (j) {
+        return j && typeof j.daily === "number" ? j.daily : null;
+      })
+      .catch(function () {
+        return null;
+      });
+  }
+
+  function loadPublicStats_() {
+    var dailyP = loadPresenceDaily_();
+    var dlP = useGithub
+      ? loadGithubDownloadCount_()
+      : (presenceBase
+        ? fetch(presenceBase + "/stats", { method: "GET", mode: "cors", cache: "no-store" })
+            .then(function (r) { return r.json(); })
+            .then(function (j) { return j && typeof j.downloads === "number" ? j.downloads : null; })
+            .catch(function () { return null; })
+        : Promise.resolve(null));
+
+    Promise.all([dlP, dailyP]).then(function (pair) {
+      paintPublicStats_({ downloads: pair[0], daily: pair[1] });
+    });
+  }
+
+  /** Legacy Netlify click counter only — skipped when using GitHub Releases. */
+  function recordDownloadClick_() {
+    if (!presenceBase || useGithub) return;
+    try {
+      fetch(presenceBase + "/download", {
+        method: "POST",
+        mode: "cors",
+        keepalive: true,
+        headers: { "Content-Type": "application/json" },
+        body: "{}"
+      })
+        .then(function (r) { return r.json(); })
+        .then(function (j) {
+          if (j && typeof j.downloads === "number") setText("statDownloads", formatStat_(j.downloads));
+        })
+        .catch(function () {});
+    } catch (eRec) {}
+  }
+
+  [
+    "heroDownload", "navDownload", "downloadBtn", "footerDownload",
+    "heroDownloadMac", "downloadBtnMac"
+  ].forEach(function (id) {
+    var el = document.getElementById(id);
+    if (!el) return;
+    el.addEventListener("click", function () {
+      recordDownloadClick_();
+    });
+  });
+
+  loadPublicStats_();
 
   if (cfg.feedbackEmail) {
     var mail = document.getElementById("feedbackMail");

@@ -1,27 +1,14 @@
-# Downloads folder
+# Downloads — GitHub Releases (not this folder)
 
-Place installers here before deploying:
+Browser download buttons on the site point at GitHub Releases latest assets:
 
-  Listing-Simulator-Setup-1.0.11.exe          (Windows)
-  Listing-Simulator-1.0.11-mac.dmg            (Mac, ~108 MB)
+  https://github.com/sdfghjmxzx/listing-simulator-website/releases/latest/download/<filename>
 
-Windows build (from CatalogDesktop on a Windows PC):
+Configured in js/site-config.js:
 
-  npm run release:patch
+  downloadSource: "github"
+  githubReleaseLatestBase: "https://github.com/.../releases/latest/download"
+  downloadFile / downloadFileMac: filenames matching Release assets
 
-Mac build (must run on macOS, or via GitHub Actions → "Build Mac installer"):
-
-  npm run dist:mac
-
-Copy Mac output from:
-
-  CatalogDesktop/dist/Listing-Simulator-1.0.11-mac.dmg
-  CatalogDesktop/dist/Listing-Simulator-1.0.11-mac.zip   (optional; for auto-update)
-  CatalogDesktop/dist/latest-mac.yml                     (optional; into ../updates/)
-
-Also copy Windows update feed files into ../updates/ (latest.yml + Setup exe + .blockmap).
-
-The installers are ~87–95 MB — do not commit to git (see .gitignore).
-Upload via Netlify deploy or drag the entire website/ folder when publishing.
-
-Without the files on Netlify, /downloads/* returns 404 even with correct links.
+Do not upload installers into this folder for Netlify — it wastes bandwidth.
+Lifetime download counts on the site come from the GitHub Releases API (asset download_count).

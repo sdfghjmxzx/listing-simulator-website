@@ -11,11 +11,25 @@ window.SITE_CONFIG = {
   // Paste App ID from https://cusdis.com dashboard (Website → Embed / App ID). Webhook is optional — leave off.
   cusdisAppId: "5fd0c7e5-7870-4525-9d80-7ac1f9466106",
   buyMeACoffeeUrl: "",
+  /** Cloudflare Worker for public stats (daily users + optional legacy download counter). */
+  presenceUrl: "https://listing-simulator-presence.listingsimulator.workers.dev",
+  /**
+   * downloadSource: "github" = installers on GitHub Releases; download count from Releases API.
+   * "site" = legacy Netlify /downloads/ + Worker POST /download click counter.
+   */
+  downloadSource: "github",
+  githubOwner: "sdfghjmxzx",
+  githubRepo: "listing-simulator-website",
+  /** Base for browser download links (latest release assets by filename). */
+  githubReleaseLatestBase:
+    "https://github.com/sdfghjmxzx/listing-simulator-website/releases/latest/download",
+  githubReleasesApi:
+    "https://api.github.com/repos/sdfghjmxzx/listing-simulator-website/releases",
+
 
   /**
    * One continuous gallery. Albums are cover cards on the page;
    * opening any album starts at its first image, then next/prev walk ALL images in order.
-   * Replace *-placeholder.svg files with real screenshots when ready (keep filenames or update src).
    */
   galleryAlbums: [
     {
@@ -23,9 +37,8 @@ window.SITE_CONFIG = {
       title: "Health Check",
       blurb: "Inventory bars, listing health, and gallery probes.",
       images: [
-        { src: "assets/screenshots/health/01-placeholder.svg", caption: "Inventory health bars (placeholder — replace with screenshot)" },
-        { src: "assets/screenshots/health/02-placeholder.svg", caption: "Listing Health Check details (placeholder)" },
-        { src: "assets/screenshots/health/03-placeholder.svg", caption: "Gallery Health Check (placeholder)" }
+        { src: "assets/screenshots/health/01.png", caption: "Inventory gallery hover — family health issues" },
+        { src: "assets/screenshots/health/02.png", caption: "Listing Health Check details" }
       ]
     },
     {
@@ -33,8 +46,8 @@ window.SITE_CONFIG = {
       title: "Listing Creation",
       blurb: "Create New Listing and Make variation.",
       images: [
-        { src: "assets/screenshots/create-listing/01-placeholder.svg", caption: "Create New Listing form (placeholder)" },
-        { src: "assets/screenshots/create-listing/02-placeholder.svg", caption: "Make variation search (placeholder)" }
+        { src: "assets/screenshots/create-listing/01.png", caption: "Create New Listing form" },
+        { src: "assets/screenshots/create-listing/02.png", caption: "Make variation — filled from a source SKU" }
       ]
     },
     {
@@ -42,8 +55,8 @@ window.SITE_CONFIG = {
       title: "Stock, Ships & Package",
       blurb: "FBA stock, Ships, and package size tiers.",
       images: [
-        { src: "assets/screenshots/stock-package/01-placeholder.svg", caption: "FBA stock & Ships on Inventory (placeholder)" },
-        { src: "assets/screenshots/stock-package/02-placeholder.svg", caption: "Package size Pre/Post 2027 (placeholder)" }
+        { src: "assets/screenshots/stock-package/01.png", caption: "FBA stock, Ships, and size badges" },
+        { src: "assets/screenshots/stock-package/02.png", caption: "Package size tiers — Pre / Post 2027 rules" }
       ]
     },
     {
@@ -51,9 +64,9 @@ window.SITE_CONFIG = {
       title: "Image editor",
       blurb: "Modify image — crop, bg remove, aspects.",
       images: [
-        { src: "assets/screenshots/image-editor/01-placeholder.svg", caption: "Modify image workspace (placeholder)" },
-        { src: "assets/screenshots/image-editor/02-placeholder.svg", caption: "Crop & aspect presets (placeholder)" },
-        { src: "assets/screenshots/image-editor/03-placeholder.svg", caption: "Background remove (placeholder)" }
+        { src: "assets/screenshots/image-editor/01.png", caption: "Crop frame & aspect presets" },
+        { src: "assets/screenshots/image-editor/02.png", caption: "Auto Detect background remove" },
+        { src: "assets/screenshots/image-editor/03.png", caption: "Brush erase to white" }
       ]
     },
     {
@@ -61,8 +74,8 @@ window.SITE_CONFIG = {
       title: "Create Catalog & Export",
       blurb: "Catalog folder output and Export Health gate.",
       images: [
-        { src: "assets/screenshots/catalog-export/01-placeholder.svg", caption: "Create Catalog output (placeholder)" },
-        { src: "assets/screenshots/catalog-export/02-placeholder.svg", caption: "Export Health dialog (placeholder)" }
+        { src: "assets/screenshots/catalog-export/01.png", caption: "Export Health overview" },
+        { src: "assets/screenshots/catalog-export/02.png", caption: "Likely rejects — field detail cards" }
       ]
     },
     {

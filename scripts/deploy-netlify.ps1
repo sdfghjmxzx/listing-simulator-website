@@ -1,13 +1,18 @@
-# Deploy the full website folder to Netlify (includes .exe files not in git).
-# Prerequisite: netlify login (once) from this folder:
+# Deploy the LIGHT static website to Netlify (HTML/CSS/JS only).
+# Installers are NOT included — they live on GitHub Releases.
+#
+# Preferred: connect Netlify to the GitHub repo and git push.
+# This script is for manual CLI deploy of the site root only.
+#
+# Prerequisite (once):
 #   cd website
 #   npm install netlify-cli --no-save
 #   npx netlify login
-#   npx netlify link   # pick listingsimulator site if prompted
+#   npx netlify link
 #
 # Usage:
 #   .\scripts\deploy-netlify.ps1
-#   .\scripts\deploy-netlify.ps1 -Message "v1.0.10"
+#   .\scripts\deploy-netlify.ps1 -Message "site: header stats"
 
 param(
   [string]$Message = ""
@@ -24,22 +29,21 @@ if (-not (Test-Path $cli)) {
   if ($LASTEXITCODE -ne 0) { throw "npm install netlify-cli failed" }
 }
 
-$setup = Get-ChildItem (Join-Path $root "downloads\Listing-Simulator-Setup-*.exe") | Sort-Object Name -Descending | Select-Object -First 1
-if (-not $setup) { throw "No installer in downloads/. Run CatalogDesktop release first." }
-
-$yml = Get-Content (Join-Path $root "updates\latest.yml") -Raw
-if ($yml -notmatch [regex]::Escape($setup.Name)) {
-  Write-Warning "latest.yml may not match $($setup.Name) - check updates/latest.yml"
+$heavy = @(
+  Get-ChildItem (Join-Path $root "downloads\*.exe") -ErrorAction SilentlyContinue
+  Get-ChildItem (Join-Path $root "updates\*.exe") -ErrorAction SilentlyContinue
+  Get-ChildItem (Join-Path $root "downloads\*.dmg") -ErrorAction SilentlyContinue
+  Get-ChildItem (Join-Path $root "updates\*.dmg") -ErrorAction SilentlyContinue
+)
+if ($heavy -and $heavy.Count -gt 0) {
+  Write-Warning "Heavy installers found under downloads/ or updates/. Prefer deleting them before Netlify deploy to save bandwidth."
+  $heavy | ForEach-Object { Write-Warning ("  " + $_.FullName) }
 }
 
 $args = @("deploy", "--prod", "--dir=.")
 if ($Message) { $args += "--message=$Message" }
 
-Write-Host "Deploying $root to Netlify production..."
-Write-Host "  Installer: $($setup.Name)"
+Write-Host "Deploying LIGHT site $root to Netlify production (no GitHub Release upload here)..."
 & node $cli @args
-if ($LASTEXITCODE -ne 0) { throw "Netlify deploy failed (run: npx netlify login)" }
-
-Write-Host "Done. Verify:"
-Write-Host "  https://listingsimulator.netlify.app/updates/latest.yml"
-Write-Host "  https://listingsimulator.netlify.app/downloads/$($setup.Name)"
+if ($LASTEXITCODE -ne 0) { throw "netlify deploy failed with exit $LASTEXITCODE" }
+Write-Host "Done. Installers: https://github.com/sdfghjmxzx/listing-simulator-website/releases"

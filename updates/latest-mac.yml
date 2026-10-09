@@ -1,11 +1,11 @@
-version: 1.0.13
+version: 1.0.14
 files:
-  - url: https://github.com/sdfghjmxzx/listing-simulator-website/releases/latest/download/Listing-Simulator-1.0.13-mac.zip
-    sha512: Uu/m6EKXJ6KdVoH1fkXIz7/ntpVxs/fra0nZYWVJzvxDD+tyRO40QzER/ZJsh207aFdmzVGxnq9VAcOM/H7qrg==
-    size: 165790145
-  - url: https://github.com/sdfghjmxzx/listing-simulator-website/releases/latest/download/Listing-Simulator-1.0.13-mac.dmg
-    sha512: uZ1923Zwpb1XOHgTd4Gxfj37UIzxfGxG3pK9/hFoox2scmAKz64YdKD2aT6pp/BsgT7PYE5cA4Dh4Fh1o02eQA==
-    size: 171913750
-path: https://github.com/sdfghjmxzx/listing-simulator-website/releases/latest/download/Listing-Simulator-1.0.13-mac.zip
-sha512: Uu/m6EKXJ6KdVoH1fkXIz7/ntpVxs/fra0nZYWVJzvxDD+tyRO40QzER/ZJsh207aFdmzVGxnq9VAcOM/H7qrg==
-releaseDate: '2026-10-09T23:01:26.089Z'
+  - url: https://github.com/sdfghjmxzx/listing-simulator-website/releases/latest/download/Listing-Simulator-1.0.14-mac.zip
+    sha512: J9Ga0rU4g6oyCZ6Mg0EvldGwTLKxUMpuDyxMjUv/Qq8RMXqpEi9Bm67EAtwsYsKQOBp8Ldxg46Z0ZDUM9nxqfg==
+    size: 165790248
+  - url: https://github.com/sdfghjmxzx/listing-simulator-website/releases/latest/download/Listing-Simulator-1.0.14-mac.dmg
+    sha512: RT930mK9vL9VSmU699PX4KGJV3dZnGgH8pWYpsAlScl8e83tpA24RAi4eSGYntBYLH03daSFZF7yJf4Vx22g9A==
+    size: 171900600
+path: https://github.com/sdfghjmxzx/listing-simulator-website/releases/latest/download/Listing-Simulator-1.0.14-mac.zip
+sha512: J9Ga0rU4g6oyCZ6Mg0EvldGwTLKxUMpuDyxMjUv/Qq8RMXqpEi9Bm67EAtwsYsKQOBp8Ldxg46Z0ZDUM9nxqfg==
+releaseDate: '2026-10-09T23:22:27.351Z'

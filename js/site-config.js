@@ -52,8 +52,8 @@ window.SITE_CONFIG = {
     "Listing builder — live preview, full UI editing of families and listings, Referral Fee-ready files, inventory view",
     "Flat-file workflow — open Amazon catalog Excel with no Seller Central API or authorization",
     "Health Check against Amazon’s required-field rules for your catalog before upload",
-    "AI assist with Aleksa and ManaQ1 using your own API key — you review before save",
-    "Image Studio — background remove, upscale, enhance, resize, AI and bulk listing image generation, Bulk Image Upload ZIP",
+    "AI assist with Aleksa (your own API key) and ManaQ1 image generation — you review before save",
+    "Image Studio — background remove, upscale, enhance, resize, ManaQ1 and bulk listing image generation, Bulk Image Upload ZIP",
     "Export Health — clear likely-reject vs advisory errors on export",
     "Catalog create and sync — download a local Families / Standalones hierarchy folder by folder, then merge fresh inventory while keeping edits",
     "Report creation — Excel reports of the fields you choose, in seconds",
@@ -84,11 +84,11 @@ window.SITE_CONFIG = {
       title: "Listing builder",
       blurb: "Live preview, families, inventory, Referral Fee.",
       images: [
+        { src: "assets/screenshots/hero.png", caption: "Full inventory view — families, stock, tools" },
         { src: "assets/screenshots/listing/01.png", caption: "Listing workspace — see it as you build" },
         { src: "assets/screenshots/listing/02.png", caption: "Edit title and bullets in the UI" },
         { src: "assets/screenshots/create-listing/01.png", caption: "Create a listing in the UI" },
         { src: "assets/screenshots/create-listing/02.png", caption: "Grow a family from a source listing" },
-        { src: "assets/screenshots/inventory/01.png", caption: "Full inventory view" },
         { src: "assets/screenshots/inventory/03.png", caption: "Browse families and filters" },
         { src: "assets/screenshots/listing-builder/referral.png", caption: "Referral Fee Connector — link Base and Bulk" }
       ]

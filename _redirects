@@ -1,4 +1,30 @@
-# Old installer filenames → current release (deploy must include the .exe on Netlify)
-/downloads/Listing-Simulator-Setup-1.0.0.exe  /downloads/Listing-Simulator-Setup-1.0.10.exe  301
-/downloads/listing-simulator-setup-1.0.0.exe  /downloads/Listing-Simulator-Setup-1.0.10.exe  301
-/downloads/Listing-Simulator-Setup-1.0.4.exe  /downloads/Listing-Simulator-Setup-1.0.10.exe  301
+# =============================================================================
+# Downloads — never serve old Netlify binaries. Always send people to GitHub Latest.
+# Filenames must match the current GitHub Release assets (bump when you ship).
+# =============================================================================
+/downloads/Listing-Simulator-Setup-*.exe  https://github.com/sdfghjmxzx/listing-simulator-website/releases/latest/download/Listing-Simulator-Setup-1.0.13.exe  302!
+/downloads/listing-simulator-setup-*.exe  https://github.com/sdfghjmxzx/listing-simulator-website/releases/latest/download/Listing-Simulator-Setup-1.0.13.exe  302!
+/downloads/Listing-Simulator-*-mac.dmg    https://github.com/sdfghjmxzx/listing-simulator-website/releases/latest/download/Listing-Simulator-1.0.13-mac.dmg  302!
+/downloads/Listing-Simulator-*-mac.zip    https://github.com/sdfghjmxzx/listing-simulator-website/releases/latest/download/Listing-Simulator-1.0.13-mac.zip  302!
+/downloads/*                              https://github.com/sdfghjmxzx/listing-simulator-website/releases/latest/download/Listing-Simulator-Setup-1.0.13.exe  302!
+
+# Legacy auto-update feed on Netlify → GitHub Latest (old installs still hit /updates/)
+/updates/latest.yml                       https://github.com/sdfghjmxzx/listing-simulator-website/releases/latest/download/latest.yml  302!
+/updates/latest-mac.yml                   https://github.com/sdfghjmxzx/listing-simulator-website/releases/latest/download/latest-mac.yml  302!
+/updates/*.exe                            https://github.com/sdfghjmxzx/listing-simulator-website/releases/latest/download/Listing-Simulator-Setup-1.0.13.exe  302!
+/updates/*.blockmap                       https://github.com/sdfghjmxzx/listing-simulator-website/releases/latest/download/Listing-Simulator-Setup-1.0.13.exe.blockmap  302!
+/updates/*-mac.dmg                        https://github.com/sdfghjmxzx/listing-simulator-website/releases/latest/download/Listing-Simulator-1.0.13-mac.dmg  302!
+/updates/*-mac.zip                        https://github.com/sdfghjmxzx/listing-simulator-website/releases/latest/download/Listing-Simulator-1.0.13-mac.zip  302!
+/updates/*                                https://github.com/sdfghjmxzx/listing-simulator-website/releases/latest/download/latest.yml  302!
+
+# =============================================================================
+# Bot / WordPress probes — not a WP site; return 404 without looking like success
+# =============================================================================
+/wp-admin/*       /404.html  404
+/wp-login.php     /404.html  404
+/xmlrpc.php       /404.html  404
+/wordpress/*      /404.html  404
+/wp-content/*     /404.html  404
+/wp-includes/*    /404.html  404
+/wlwmanifest.xml  /404.html  404
+/xmlrpc.php/      /404.html  404

@@ -31,7 +31,7 @@
     <h1>Page not found</h1>
     <p class="error-lead">That URL doesn’t exist on listingsimulator.net. If you wanted the app, use Download below.</p>
     <div class="error-actions">
-      <a class="btn btn-primary" id="errorDownload" href="https://github.com/sdfghjmxzx/listing-simulator-website/releases/latest/download/Listing-Simulator-Setup-1.0.12.exe">Download Listing Simulator</a>
+      <a class="btn btn-primary" id="errorDownload" href="https://github.com/sdfghjmxzx/listing-simulator-website/releases/latest/download/Listing-Simulator-Setup-1.0.13.exe">Download Listing Simulator</a>
       <a class="btn btn-secondary" href="/">Back to home</a>
     </div>
     <p class="error-hint" id="errorHint"></p>
@@ -47,7 +47,7 @@
       · <a href="/terms.html">Terms</a>
     </div>
     <div>
-      <a id="footerDownload" href="https://github.com/sdfghjmxzx/listing-simulator-website/releases/latest/download/Listing-Simulator-Setup-1.0.12.exe">Download</a>
+      <a id="footerDownload" href="https://github.com/sdfghjmxzx/listing-simulator-website/releases/latest/download/Listing-Simulator-Setup-1.0.13.exe">Download</a>
       · <a href="mailto:feedback@listingsimulator.net">feedback@listingsimulator.net</a>
     </div>
   </div>
@@ -60,7 +60,7 @@
 <script>
 (function () {
   var cfg = window.SITE_CONFIG || {};
-  var file = cfg.downloadFile || "Listing-Simulator-Setup-1.0.12.exe";
+  var file = cfg.downloadFile || "Listing-Simulator-Setup-1.0.13.exe";
   var ghBase = String(cfg.githubReleaseLatestBase || "").replace(/\/+$/, "");
   var url = (cfg.downloadSource === "github" && ghBase)
     ? (ghBase + "/" + file)

@@ -337,11 +337,11 @@
     if (e.key === "ArrowLeft") prevSlide();
   });
 
-  // Hero image opens Health Check album (selling-point spine)
+  // Hero image opens Listing builder album
   var heroImg = document.querySelector(".hero-visual img");
-  var heroAlbum = typeof albumStartIndex.health === "number"
-    ? "health"
-    : (typeof albumStartIndex["listing-builder"] === "number" ? "listing-builder" : null);
+  var heroAlbum = typeof albumStartIndex["listing-builder"] === "number"
+    ? "listing-builder"
+    : (typeof albumStartIndex.health === "number" ? "health" : null);
   if (heroImg && heroAlbum) {
     heroImg.style.cursor = "pointer";
     heroImg.addEventListener("click", function () {

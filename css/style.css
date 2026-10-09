@@ -172,8 +172,8 @@ a:hover { color: var(--orange); }
 
 .hero-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 40px;
+  grid-template-columns: minmax(260px, 0.75fr) minmax(380px, 1.55fr);
+  gap: 28px;
   align-items: center;
 }
 
@@ -216,13 +216,19 @@ a:hover { color: var(--orange); }
   background: rgba(255, 255, 255, 0.06);
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: var(--radius);
-  padding: 12px;
+  padding: 6px;
   box-shadow: var(--shadow);
+  min-width: 0;
 }
 
 .hero-visual img {
   border-radius: 6px;
   width: 100%;
+  height: auto;
+  display: block;
+  min-height: 280px;
+  object-fit: cover;
+  object-position: top left;
 }
 
 /* Sections */

@@ -1,14 +1,6 @@
-# Downloads — GitHub Releases (not this folder)
+No installers are hosted on Netlify.
 
-Browser download buttons on the site point at GitHub Releases latest assets:
+Windows and Mac downloads are only on GitHub Releases (always the current Latest):
+https://github.com/sdfghjmxzx/listing-simulator-website/releases/latest
 
-  https://github.com/sdfghjmxzx/listing-simulator-website/releases/latest/download/<filename>
-
-Configured in js/site-config.js:
-
-  downloadSource: "github"
-  githubReleaseLatestBase: "https://github.com/.../releases/latest/download"
-  downloadFile / downloadFileMac: filenames matching Release assets
-
-Do not upload installers into this folder for Netlify — it wastes bandwidth.
-Lifetime download counts on the site come from the GitHub Releases API (asset download_count).
+Any /downloads/* URL on this site redirects to that Latest release.

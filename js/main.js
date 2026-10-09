@@ -11,8 +11,8 @@
     if (el && href) el.href = href;
   }
 
-  var winFile = cfg.downloadFile || "Listing-Simulator-Setup-1.0.12.exe";
-  var macFile = cfg.downloadFileMac || "Listing-Simulator-1.0.12-mac.dmg";
+  var winFile = cfg.downloadFile || "Listing-Simulator-Setup-1.0.13.exe";
+  var macFile = cfg.downloadFileMac || "Listing-Simulator-1.0.13-mac.dmg";
   var ghBase = String(cfg.githubReleaseLatestBase || "").replace(/\/+$/, "");
   var useGithub = cfg.downloadSource === "github" && !!ghBase;
   var downloadUrl = useGithub
@@ -21,13 +21,13 @@
   var downloadUrlMac = useGithub
     ? (ghBase + "/" + macFile)
     : ("/downloads/" + macFile);
-  var versionLabel = "v" + (cfg.version || "1.0.12") + (cfg.downloadSize ? " · Windows " + cfg.downloadSize : "");
-  var versionLabelMac = "v" + (cfg.version || "1.0.12") + (cfg.downloadSizeMac ? " · Mac " + cfg.downloadSizeMac : "");
+  var versionLabel = "v" + (cfg.version || "1.0.13") + (cfg.downloadSize ? " · Windows " + cfg.downloadSize : "");
+  var versionLabelMac = "v" + (cfg.version || "1.0.13") + (cfg.downloadSizeMac ? " · Mac " + cfg.downloadSizeMac : "");
 
   setText("heroVersion", versionLabel);
   setText("downloadVersion", versionLabel);
   setText("downloadVersionMac", versionLabelMac);
-  setText("footerVersion", "Listing Simulator " + (cfg.version || "1.0.12"));
+  setText("footerVersion", "Listing Simulator " + (cfg.version || "1.0.13"));
 
   ["heroDownload", "navDownload", "downloadBtn", "footerDownload"].forEach(function (id) {
     setHref(id, downloadUrl);
@@ -51,7 +51,7 @@
   function paintPublicStats_(st) {
     st = st || {};
     if (st.downloads != null) setText("statDownloads", formatStat_(st.downloads));
-    if (st.daily != null) setText("statDaily", formatStat_(st.daily));
+    if (st.active != null) setText("statActive", formatStat_(st.active));
   }
 
   function sumGithubDownloads_(releases) {
@@ -87,12 +87,12 @@
       });
   }
 
-  function loadPresenceDaily_() {
+  function loadPresenceActive_() {
     if (!presenceBase) return Promise.resolve(null);
     return fetch(presenceBase + "/stats", { method: "GET", mode: "cors", cache: "no-store" })
       .then(function (r) { return r.json(); })
       .then(function (j) {
-        return j && typeof j.daily === "number" ? j.daily : null;
+        return j && typeof j.active === "number" ? j.active : null;
       })
       .catch(function () {
         return null;
@@ -100,7 +100,7 @@
   }
 
   function loadPublicStats_() {
-    var dailyP = loadPresenceDaily_();
+    var activeP = loadPresenceActive_();
     var dlP = useGithub
       ? loadGithubDownloadCount_()
       : (presenceBase
@@ -110,8 +110,8 @@
             .catch(function () { return null; })
         : Promise.resolve(null));
 
-    Promise.all([dlP, dailyP]).then(function (pair) {
-      paintPublicStats_({ downloads: pair[0], daily: pair[1] });
+    Promise.all([dlP, activeP]).then(function (pair) {
+      paintPublicStats_({ downloads: pair[0], active: pair[1] });
     });
   }
 
@@ -206,7 +206,7 @@
     });
   }
 
-  // JSON-LD from config
+  // JSON-LD from config (featureList + keywords for SEO; keep UI copy clean)
   var ld = document.getElementById("softwareLd");
   if (ld && cfg.productName) {
     var schema = {
@@ -220,9 +220,16 @@
         price: "0",
         priceCurrency: "USD"
       },
-      downloadUrl: (cfg.domain || window.location.origin) + downloadUrl,
-      softwareVersion: cfg.version || "1.0.11",
-      description: "Windows and Mac desktop app for Amazon catalog Excel files. Health Check, Listing Creation, Stock/Ships/Package watch, image editor, Create Catalog, and Export with health review — all local."
+      downloadUrl: downloadUrl.indexOf("http") === 0
+        ? downloadUrl
+        : ((cfg.domain || window.location.origin) + downloadUrl),
+      softwareVersion: cfg.version || "1.0.13",
+      description: cfg.seoDescription ||
+        "Amazon listing builder and listing optimization software for Windows and Mac. Health Check and Export Health use your catalog’s Amazon rules — flat-file workflow, no Seller Central API required.",
+      featureList: cfg.featureList || [],
+      keywords: Array.isArray(cfg.seoKeywords)
+        ? cfg.seoKeywords.join(", ")
+        : (cfg.seoKeywords || "")
     };
     ld.textContent = JSON.stringify(schema);
   }
@@ -330,12 +337,15 @@
     if (e.key === "ArrowLeft") prevSlide();
   });
 
-  // Hero image opens Inventory album
+  // Hero image opens Health Check album (selling-point spine)
   var heroImg = document.querySelector(".hero-visual img");
-  if (heroImg && typeof albumStartIndex.inventory === "number") {
+  var heroAlbum = typeof albumStartIndex.health === "number"
+    ? "health"
+    : (typeof albumStartIndex["listing-builder"] === "number" ? "listing-builder" : null);
+  if (heroImg && heroAlbum) {
     heroImg.style.cursor = "pointer";
     heroImg.addEventListener("click", function () {
-      openLightbox(albumStartIndex.inventory);
+      openLightbox(albumStartIndex[heroAlbum]);
     });
   }
 })();

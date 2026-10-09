@@ -9,7 +9,7 @@ Repo (source of truth): https://github.com/sdfghjmxzx/listing-simulator-website
 |------|--------|
 | HTML / CSS / JS / screenshots | This git repo → **Netlify** (light deploys) |
 | Installers + `latest.yml` + blockmaps | **GitHub Releases** on the same repo |
-| Active / daily user stats | Cloudflare Worker (unchanged) |
+| Active users (concurrent) + optional daily | Cloudflare Worker `GET /stats` → site shows `active` |
 
 Do **not** upload `.exe` / `.dmg` to Netlify. That burned bandwidth on every deploy and every download.
 

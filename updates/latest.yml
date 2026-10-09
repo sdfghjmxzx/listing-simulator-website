@@ -1,8 +1,8 @@
-version: 1.0.13
+version: 1.0.14
 files:
-  - url: https://github.com/sdfghjmxzx/listing-simulator-website/releases/latest/download/Listing-Simulator-Setup-1.0.13.exe
-    sha512: kFaX8SL3giBP1Kh8zBQKHC4Od8Gjk8WUCwiWu6uhh0n158Z7yEfy6jZIGoYY1XQiUV+YZXhblfvi9AYGMR0oGg==
-    size: 176987336
-path: https://github.com/sdfghjmxzx/listing-simulator-website/releases/latest/download/Listing-Simulator-Setup-1.0.13.exe
-sha512: kFaX8SL3giBP1Kh8zBQKHC4Od8Gjk8WUCwiWu6uhh0n158Z7yEfy6jZIGoYY1XQiUV+YZXhblfvi9AYGMR0oGg==
-releaseDate: 2026-10-09T23:01:39.375Z
+  - url: https://github.com/sdfghjmxzx/listing-simulator-website/releases/latest/download/Listing-Simulator-Setup-1.0.14.exe
+    sha512: Cfl/bbLydRbLtAs1vfPwFWFIsijjSpALINAGVFVDwYyzfVoR+rRc2+sBifKvaZgIlKran4KpGu9HzBCz9B54Xg==
+    size: 176987074
+path: https://github.com/sdfghjmxzx/listing-simulator-website/releases/latest/download/Listing-Simulator-Setup-1.0.14.exe
+sha512: Cfl/bbLydRbLtAs1vfPwFWFIsijjSpALINAGVFVDwYyzfVoR+rRc2+sBifKvaZgIlKran4KpGu9HzBCz9B54Xg==
+releaseDate: '2026-10-09T23:19:47.583Z'

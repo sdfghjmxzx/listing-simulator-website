@@ -2,19 +2,19 @@
 # Downloads — never serve old Netlify binaries. Always send people to GitHub Latest.
 # Filenames must match the current GitHub Release assets (bump when you ship).
 # =============================================================================
-/downloads/Listing-Simulator-Setup-*.exe  https://github.com/sdfghjmxzx/listing-simulator-website/releases/latest/download/Listing-Simulator-Setup-1.0.13.exe  302!
-/downloads/listing-simulator-setup-*.exe  https://github.com/sdfghjmxzx/listing-simulator-website/releases/latest/download/Listing-Simulator-Setup-1.0.13.exe  302!
-/downloads/Listing-Simulator-*-mac.dmg    https://github.com/sdfghjmxzx/listing-simulator-website/releases/latest/download/Listing-Simulator-1.0.13-mac.dmg  302!
-/downloads/Listing-Simulator-*-mac.zip    https://github.com/sdfghjmxzx/listing-simulator-website/releases/latest/download/Listing-Simulator-1.0.13-mac.zip  302!
-/downloads/*                              https://github.com/sdfghjmxzx/listing-simulator-website/releases/latest/download/Listing-Simulator-Setup-1.0.13.exe  302!
+/downloads/Listing-Simulator-Setup-*.exe  https://github.com/sdfghjmxzx/listing-simulator-website/releases/latest/download/Listing-Simulator-Setup-1.0.14.exe  302!
+/downloads/listing-simulator-setup-*.exe  https://github.com/sdfghjmxzx/listing-simulator-website/releases/latest/download/Listing-Simulator-Setup-1.0.14.exe  302!
+/downloads/Listing-Simulator-*-mac.dmg    https://github.com/sdfghjmxzx/listing-simulator-website/releases/latest/download/Listing-Simulator-1.0.14-mac.dmg  302!
+/downloads/Listing-Simulator-*-mac.zip    https://github.com/sdfghjmxzx/listing-simulator-website/releases/latest/download/Listing-Simulator-1.0.14-mac.zip  302!
+/downloads/*                              https://github.com/sdfghjmxzx/listing-simulator-website/releases/latest/download/Listing-Simulator-Setup-1.0.14.exe  302!
 
 # Legacy auto-update feed on Netlify → GitHub Latest (old installs still hit /updates/)
 /updates/latest.yml                       https://github.com/sdfghjmxzx/listing-simulator-website/releases/latest/download/latest.yml  302!
 /updates/latest-mac.yml                   https://github.com/sdfghjmxzx/listing-simulator-website/releases/latest/download/latest-mac.yml  302!
-/updates/*.exe                            https://github.com/sdfghjmxzx/listing-simulator-website/releases/latest/download/Listing-Simulator-Setup-1.0.13.exe  302!
-/updates/*.blockmap                       https://github.com/sdfghjmxzx/listing-simulator-website/releases/latest/download/Listing-Simulator-Setup-1.0.13.exe.blockmap  302!
-/updates/*-mac.dmg                        https://github.com/sdfghjmxzx/listing-simulator-website/releases/latest/download/Listing-Simulator-1.0.13-mac.dmg  302!
-/updates/*-mac.zip                        https://github.com/sdfghjmxzx/listing-simulator-website/releases/latest/download/Listing-Simulator-1.0.13-mac.zip  302!
+/updates/*.exe                            https://github.com/sdfghjmxzx/listing-simulator-website/releases/latest/download/Listing-Simulator-Setup-1.0.14.exe  302!
+/updates/*.blockmap                       https://github.com/sdfghjmxzx/listing-simulator-website/releases/latest/download/Listing-Simulator-Setup-1.0.14.exe.blockmap  302!
+/updates/*-mac.dmg                        https://github.com/sdfghjmxzx/listing-simulator-website/releases/latest/download/Listing-Simulator-1.0.14-mac.dmg  302!
+/updates/*-mac.zip                        https://github.com/sdfghjmxzx/listing-simulator-website/releases/latest/download/Listing-Simulator-1.0.14-mac.zip  302!
 /updates/*                                https://github.com/sdfghjmxzx/listing-simulator-website/releases/latest/download/latest.yml  302!
 
 # =============================================================================

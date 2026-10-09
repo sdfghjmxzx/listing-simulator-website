@@ -2,10 +2,10 @@
 window.SITE_CONFIG = {
   productName: "Listing Simulator",
   domain: "https://listingsimulator.net",
-  version: "1.0.13",
-  downloadFile: "Listing-Simulator-Setup-1.0.13.exe",
+  version: "1.0.14",
+  downloadFile: "Listing-Simulator-Setup-1.0.14.exe",
   downloadSize: "168 MB",
-  downloadFileMac: "Listing-Simulator-1.0.13-mac.dmg",
+  downloadFileMac: "Listing-Simulator-1.0.14-mac.dmg",
   downloadSizeMac: "163 MB",
   feedbackEmail: "feedback@listingsimulator.net",
   // Paste App ID from https://cusdis.com dashboard (Website → Embed / App ID). Webhook is optional — leave off.

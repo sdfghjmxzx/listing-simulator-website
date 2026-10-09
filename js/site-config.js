@@ -2,17 +2,61 @@
 window.SITE_CONFIG = {
   productName: "Listing Simulator",
   domain: "https://listingsimulator.net",
-  version: "1.0.12",
-  downloadFile: "Listing-Simulator-Setup-1.0.12.exe",
+  version: "1.0.13",
+  downloadFile: "Listing-Simulator-Setup-1.0.13.exe",
   downloadSize: "168 MB",
-  downloadFileMac: "Listing-Simulator-1.0.12-mac.dmg",
+  downloadFileMac: "Listing-Simulator-1.0.13-mac.dmg",
   downloadSizeMac: "163 MB",
   feedbackEmail: "feedback@listingsimulator.net",
   // Paste App ID from https://cusdis.com dashboard (Website → Embed / App ID). Webhook is optional — leave off.
   cusdisAppId: "5fd0c7e5-7870-4525-9d80-7ac1f9466106",
   buyMeACoffeeUrl: "",
-  /** Cloudflare Worker for public stats (daily users + optional legacy download counter). */
+  /**
+   * Cloudflare Worker for public stats.
+   * Website header uses GET /stats → `active` (concurrent heartbeats right now).
+   * Worker also exposes `daily` (UTC unique sessions) — not shown on the site.
+   */
   presenceUrl: "https://listing-simulator-presence.listingsimulator.workers.dev",
+
+  /** Meta / JSON-LD description (homepage SEO). */
+  seoDescription:
+    "Amazon listing builder and listing optimization software for Windows and Mac. Health Check and Export Health follow your catalog’s Amazon logic, structure, and rules. AI assist (Aleksa + ManaQ1), Image Studio, Image Upload ZIP, Referral Fee export, and Create Catalog — flat-file workflow, no Amazon API required. Built by Amazon Listing Specialists for Amazon Listing Specialists.",
+
+  /**
+   * Curated commercial keywords that match real product capabilities
+   * (from Rank CSV — skip keyword-research / rank-tracker / reverse-ASIN claims).
+   */
+  seoKeywords: [
+    "Amazon listing optimizer",
+    "Amazon listing optimization software",
+    "Amazon listing software",
+    "Amazon listing builder",
+    "AI Amazon listing generator",
+    "Amazon listing audit tool",
+    "Amazon product listing tool",
+    "Amazon listing optimization tool",
+    "Amazon listing management software",
+    "Amazon listing optimization for sellers",
+    "FBA listing optimization tool",
+    "Amazon listing quality checker",
+    "Amazon listing analyzer",
+    "Amazon listing rewrite tool",
+    "Amazon product title generator",
+    "Amazon bullet point generator",
+    "Amazon product description generator",
+    "FBA seller software"
+  ],
+
+  /** JSON-LD SoftwareApplication featureList */
+  featureList: [
+    "Listing Builder — create and edit Amazon listings from your catalog Excel report",
+    "Health Check and Export Health using Amazon catalog rules, structure, and logic",
+    "AI assist for copy, enhance, and Image Studio generation (your own API keys)",
+    "Image Studio with Upscale, AI Enhance, mass generation, and Bulk Image Upload ZIP",
+    "Referral Fee export, Create Catalog, inventory reports, Merge, Compare, and pins",
+    "Flat-file workflow — no Seller Central API connection required",
+    "Local desktop app for Windows and Mac — catalog stays on your PC"
+  ],
   /**
    * downloadSource: "github" = installers on GitHub Releases; download count from Releases API.
    * "site" = legacy Netlify /downloads/ + Worker POST /download click counter.
@@ -61,8 +105,8 @@ window.SITE_CONFIG = {
     },
     {
       id: "image-editor",
-      title: "Image editor",
-      blurb: "Modify image — crop, bg remove, aspects.",
+      title: "Image Studio tools",
+      blurb: "Modify — crop, Upscale, AI Enhance, aspects.",
       images: [
         { src: "assets/screenshots/image-editor/01.png", caption: "Crop frame & aspect presets" },
         { src: "assets/screenshots/image-editor/02.png", caption: "Auto Detect background remove" },
